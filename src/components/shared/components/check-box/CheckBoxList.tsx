@@ -75,11 +75,11 @@ export const CheckBoxList = ({
                   : "/Images/check-box/click.svg"
               }
               alt="선택 상태"
-              width={size === "sm" ? 24 : 36}
-              height={size === "sm" ? 24 : 36}
+              width={size === "xl" ? 36 : 24}
+              height={size === "xl" ? 36 : 24}
             />
             <Typography
-              variant={size === "sm" ? "SB_14" : "SB_18"}
+              variant={size === "xl" ? "SB_18" : "SB_14"}
               color="text.Primary"
             >
               {option}

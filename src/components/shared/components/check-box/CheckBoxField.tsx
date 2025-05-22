@@ -33,7 +33,7 @@ export const CheckBoxField = ({ selected, onChange }: CheckBoxProps) => {
             onClick={() => onChange(option)}
             sx={{
               display: "flex",
-              alignItems: "center",
+              justifyContent: "flex-start",
               gap: "12px",
               width: ["280px", "560px"],
               height: ["52px", "84px"],
@@ -45,7 +45,6 @@ export const CheckBoxField = ({ selected, onChange }: CheckBoxProps) => {
                 ? COLORS.PrimaryBlue[300]
                 : "transparent",
               cursor: "pointer",
-
               boxShadow: "4px 4px 10px 0px #C3D9F233",
             }}
           >
@@ -56,12 +55,16 @@ export const CheckBoxField = ({ selected, onChange }: CheckBoxProps) => {
                   : "/Images/check-box/click.svg"
               }
               alt="선택 상태"
-              width={size === "sm" ? 24 : 36}
-              height={size === "sm" ? 24 : 36}
+              width={size === "xl" ? 36 : 24}
+              height={size === "xl" ? 36 : 24}
             />
             <Typography
-              variant={size === "sm" ? "SB_14" : "SB_18"}
               color="text.primary"
+              sx={{
+                fontSize: [14, 18],
+                lineHeight: ["24px", "26px"],
+                fontWeight: 600,
+              }}
             >
               {option}
             </Typography>
