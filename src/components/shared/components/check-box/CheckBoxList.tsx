@@ -1,11 +1,5 @@
 import { COLORS } from "@/public/theme/colors";
-import {
-  Box,
-  Button,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 
 interface CheckBoxProps {
@@ -24,11 +18,6 @@ export const CheckBoxList = ({
     "가정이사 (쓰리룸, 20평대 이상)",
     "사무실이사 (사무실, 상업공간)",
   ];
-
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("tablet"));
-  const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
-  const size = isMobile ? "sm" : isDesktop ? "xl" : "md";
 
   return (
     <Box
@@ -68,18 +57,30 @@ export const CheckBoxList = ({
               boxShadow: "4px 4px 10px 0px #C3D9F233",
             }}
           >
-            <Image
-              src={
-                isSelected
-                  ? "/Images/check-box/onclick.svg"
-                  : "/Images/check-box/click.svg"
-              }
-              alt="선택 상태"
-              width={size === "xl" ? 36 : 24}
-              height={size === "xl" ? 36 : 24}
-            />
+            <Box
+              width={["24px", "36px"]}
+              height={["24px", "36px"]}
+              position={"relative"}
+            >
+              <Image
+                src={
+                  isSelected
+                    ? "/Images/check-box/onclick.svg"
+                    : "/Images/check-box/click.svg"
+                }
+                alt="선택 상태"
+                fill
+                style={{
+                  objectFit: "cover",
+                }}
+              />
+            </Box>
             <Typography
-              variant={size === "xl" ? "SB_18" : "SB_14"}
+              sx={{
+                fontSize: [14, 18],
+                lineHeight: ["24px", "26px"],
+                fontWeight: 600,
+              }}
               color="text.Primary"
             >
               {option}
@@ -101,7 +102,14 @@ export const CheckBoxList = ({
           cursor: "pointer",
         }}
       >
-        <Typography variant={size === "sm" ? "SB_16" : "SB_20"} color="#FFF">
+        <Typography
+          sx={{
+            fontSize: [16, 20],
+            lineHeight: ["26px", "32px"],
+            fontWeight: 600,
+          }}
+          color="#FFF"
+        >
           선택 완료
         </Typography>
       </Button>

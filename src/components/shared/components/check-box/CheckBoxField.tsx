@@ -1,11 +1,5 @@
 import { COLORS } from "@/public/theme/colors";
-import {
-  Box,
-  Button,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import Image from "next/image";
 
 interface CheckBoxProps {
@@ -18,10 +12,6 @@ export const CheckBoxField = ({ selected, onChange }: CheckBoxProps) => {
     "소형이사 (원룸, 투룸, 20평대 미만)",
     "가정이사 (쓰리룸, 20평대 이상)",
   ];
-  const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("tablet"));
-  const isDesktop = useMediaQuery(theme.breakpoints.up("desktop"));
-  const size = isMobile ? "sm" : isDesktop ? "xl" : "md";
 
   return (
     <Box sx={{ display: "flex", flexDirection: "column", gap: "24px" }}>
@@ -48,16 +38,24 @@ export const CheckBoxField = ({ selected, onChange }: CheckBoxProps) => {
               boxShadow: "4px 4px 10px 0px #C3D9F233",
             }}
           >
-            <Image
-              src={
-                isSelected
-                  ? "/Images/check-box/onclick.svg"
-                  : "/Images/check-box/click.svg"
-              }
-              alt="선택 상태"
-              width={size === "xl" ? 36 : 24}
-              height={size === "xl" ? 36 : 24}
-            />
+            <Box
+              width={["24px", "36px"]}
+              height={["24px", "36px"]}
+              position={"relative"}
+            >
+              <Image
+                src={
+                  isSelected
+                    ? "/Images/check-box/onclick.svg"
+                    : "/Images/check-box/click.svg"
+                }
+                alt="선택 상태"
+                fill
+                style={{
+                  objectFit: "cover",
+                }}
+              />
+            </Box>
             <Typography
               color="text.primary"
               sx={{
