@@ -1,6 +1,7 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
+import { COLORS } from "@/public/theme/colors";
 
 interface DropDownListProps {
   type: "region" | "service";
@@ -23,8 +24,7 @@ export default function DropDownList({
         position: "absolute",
         width: 328,
         height: isRegion ? 320 : 256,
-        backgroundColor: "#FFFFFF",
-        borderRadius: "16px",
+        backgroundColor: COLORS.White[100],
         boxShadow: "4px 4px 10px rgba(224, 224, 224, 0.25)",
         display: "flex",
         flexDirection: isRegion ? "row" : "column",
@@ -45,9 +45,11 @@ export default function DropDownList({
               width: isRegion ? "50%" : "100%",
               padding: isRegion ? "12px 16px" : "14px 24px",
               cursor: "pointer",
-              backgroundColor: isSelected ? "#F5FAFF" : "transparent",
+              backgroundColor: isSelected
+                ? COLORS.PrimaryBlue[50]
+                : "transparent",
               "&:hover": {
-                backgroundColor: "#F5FAFF",
+                backgroundColor: COLORS.PrimaryBlue[50],
               },
             }}
           >

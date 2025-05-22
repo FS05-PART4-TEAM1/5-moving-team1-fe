@@ -1,6 +1,7 @@
 "use client";
 import { Button, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
+import { COLORS } from "@/public/theme/colors";
 
 interface DropDownButtonProps {
   label: string;
@@ -15,15 +16,15 @@ export default function DropDownButton({
 }: DropDownButtonProps) {
   const theme = useTheme();
   const isTablet = useMediaQuery(theme.breakpoints.down("tablet"));
-
+  //mui에서 useMediaQuery를 사용하여 반응형 구현했는데, 이렇게 하는게 맞을까요?
   const styles = isTablet
     ? {
         width: "75px",
         height: "36px",
         padding: "6px 10px 6px 14px",
-        border: "1px solid #E6E6E6",
+        border: `1px solid ${COLORS.Line[200]}`,
         borderRadius: "8px",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: COLORS.White[100],
         boxShadow: "4px 4px 10px rgba(238, 238, 238, 0.1)",
         typographyVariant: "M_14" as const,
       }
@@ -32,9 +33,9 @@ export default function DropDownButton({
         width: "328px",
         height: "64px",
         padding: "16px 24px",
-        border: "1px solid #1B92FF",
+        border: `1px solid ${COLORS.PrimaryBlue[300]}`,
         borderRadius: "16px",
-        backgroundColor: "#F5FAFF",
+        backgroundColor: COLORS.PrimaryBlue[50],
         boxShadow: "4px 4px 10px rgba(195, 217, 242, 0.2)",
         typographyVariant: "M_18" as const,
       }
@@ -42,9 +43,9 @@ export default function DropDownButton({
         width: "328px",
         height: "64px",
         padding: "16px 24px",
-        border: "1px solid #DEDEDE",
+        border: `1px solid ${COLORS.Grayscale[100]}`,
         borderRadius: "16px",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: COLORS.White[100],
         boxShadow: "4px 4px 10px rgba(195, 217, 242, 0.2)",
         typographyVariant: "M_18" as const,
       };
