@@ -1,4 +1,3 @@
-import { COLORS } from "@/public/theme/colors";
 import { Stack, Typography } from "@mui/material";
 import Image from "next/image";
 interface UserTab {
@@ -35,7 +34,10 @@ export const UserTabs = ({ user, isSmall }: UserTab) => {
           style={{ cursor: "pointer" }}
         />
         {!isSmall && (
-          <Typography variant="M_18" color={COLORS.Black[400]}>
+          <Typography
+            variant="M_18"
+            sx={(theme) => ({ color: theme.palette.Black[400] })}
+          >
             {user?.name}
           </Typography>
         )}

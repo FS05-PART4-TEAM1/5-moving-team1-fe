@@ -1,7 +1,6 @@
 import { Box, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { ChipCategory, ChipProps } from "../chip/ChipCategory";
 import Image from "next/image";
-import { COLORS } from "@/public/theme/colors";
 
 export interface CardData {
   types: ChipProps["type"][];
@@ -35,7 +34,7 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
       border="0.5px solid #F2F2F2"
       width={[327, 600, 955]}
       height={[188, 188, 230]}
-      bgcolor="#FFFFFF"
+      bgcolor={theme.palette.White[100]}
       borderRadius="16px"
       padding={["14px 16px", "14px 16px", "20px 24px"]}
       boxShadow="2px 2px 10px 0px #DCDCDC24, -2px -2px 10px 0px #DCDCDC24"
@@ -47,12 +46,12 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
           ))}
         </Box>
         <Typography
-          sx={{
+          sx={(theme) => ({
             fontSize: [14, 14, 24],
             lineHeight: ["24px", "24px", "32px"],
             fontWeight: 600,
-            color: COLORS.Black[300],
-          }}
+            color: theme.palette.Black[300],
+          })}
         >
           {data.message}
         </Typography>
@@ -62,7 +61,7 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
       <Box
         display="flex"
         border="1px solid #F2F2F2"
-        bgcolor="#FFFFFF"
+        bgcolor={theme.palette.White[100]}
         padding={["10px", "10px", "16px 18px"]}
         boxShadow="4px 4px 16px 0px #E9E9E91A"
         gap={["12px", "12px", "24px"]}
@@ -86,12 +85,12 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
             justifyContent="space-between"
           >
             <Typography
-              sx={{
+              sx={(theme) => ({
                 fontSize: [14, 14, 84],
                 lineHeight: ["24px", "24px", "26px"],
                 fontWeight: 600,
-                color: COLORS.Black[300],
-              }}
+                color: theme.palette.Black[300],
+              })}
             >
               {data.name} 기사님
             </Typography>
@@ -109,12 +108,12 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
                 style={{ cursor: "pointer" }}
               />
               <Typography
-                sx={{
+                sx={(theme) => ({
                   fontSize: [13, 13, 18],
                   lineHeight: ["22px", "22px", "26px"],
                   fontWeight: 500,
-                  color: COLORS.PrimaryBlue[400],
-                }}
+                  color: theme.palette.PrimaryBlue[400],
+                })}
               >
                 {data.like}
               </Typography>
@@ -149,22 +148,22 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
             <Box height={14} border={"1px solid #E6E6E6"}></Box>
             <Box display="flex">
               <Typography
-                sx={{
+                sx={(theme) => ({
                   fontSize: [13, 13, 16],
                   lineHeight: ["22px", "22px", "26px"],
                   fontWeight: 500,
-                  color: COLORS.Black[300],
-                }}
+                  color: theme.palette.Black[300],
+                })}
               >
                 {data.confirm}
               </Typography>
               <Typography
-                sx={{
+                sx={(theme) => ({
                   fontSize: [13, 13, 16],
                   lineHeight: ["22px", "22px", "26px"],
                   fontWeight: 500,
-                  color: COLORS.Grayscale[300],
-                }}
+                  color: theme.palette.Grayscale[300],
+                })}
               >
                 확정
               </Typography>

@@ -1,5 +1,4 @@
 "use client";
-import { COLORS } from "@/public/theme/colors";
 import {
   Button,
   Dialog,
@@ -54,7 +53,7 @@ export const RequestModal = ({
         <Stack direction={"row"} justifyContent={"space-between"}>
           <Typography
             variant={isSmall ? "B_18" : "SB_24"}
-            color={COLORS.Black[400]}
+            sx={(theme) => ({ color: theme.palette.Black[400] })}
             alignSelf="center"
           >
             {title}

@@ -1,9 +1,9 @@
 import React from "react";
-import { Snackbar, Alert, Stack, Typography } from "@mui/material";
+import { Snackbar, Alert, Stack, Typography, useTheme } from "@mui/material";
 import { useSnackbarStore } from "../store/snackBarStore";
 import Image from "next/image";
-import { COLORS } from "@/public/theme/colors";
 
+const theme = useTheme();
 type Severity = "success" | "error" | "warning" | "info";
 
 interface UseSnackbarReturn {
@@ -17,8 +17,8 @@ interface UseSnackbarReturn {
 }
 
 const infoStyles = {
-  bg: COLORS.PrimaryBlue[100],
-  text: COLORS.PrimaryBlue[300],
+  bg: theme.palette.PrimaryBlue[100],
+  text: theme.palette.PrimaryBlue[300],
   icon: "/images/info.svg",
 };
 

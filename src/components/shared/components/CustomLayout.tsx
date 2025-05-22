@@ -29,7 +29,9 @@ export const CustomLayout = ({ children }: CustomLayoutProps) => {
     <Stack
       minHeight={"100vh"}
       width={"100vw"}
-      bgcolor={isMainPage ? "#F5F5F5" : "transparent"}
+      sx={(theme) => ({
+        bgcolor: isMainPage ? theme.palette.NeutralGray[50] : "transparent",
+      })}
     >
       <Header />
       <Box px={["26px", "72px", "260px"]}>

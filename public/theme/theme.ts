@@ -1,7 +1,7 @@
 // theme.ts
 "use client";
 import { createTheme, ThemeOptions } from "@mui/material/styles";
-import { COLORS } from "./colors";
+import { COLORS, DARK_COLORS } from "./colors";
 
 declare module "@mui/material/styles" {
   interface BreakpointOverrides {
@@ -47,9 +47,9 @@ const sharedTypography: ThemeOptions["typography"] = {
   M_12: { fontSize: "12px", lineHeight: "18px", fontWeight: 500 },
   R_12: { fontSize: "12px", lineHeight: "18px", fontWeight: 400 },
 };
-
-export const createAppTheme = (mode: "light" | "dark") =>
-  createTheme({
+export const createAppTheme = (mode: "light" | "dark") => {
+  const paletteColors = mode === "light" ? COLORS : DARK_COLORS;
+  return createTheme({
     breakpoints: {
       values: {
         mobile: 375,
@@ -60,13 +60,22 @@ export const createAppTheme = (mode: "light" | "dark") =>
     typography: sharedTypography,
     palette: {
       mode,
-      primary: { main: COLORS.PrimaryBlue[300] },
+      primary: { main: paletteColors.PrimaryBlue[300] },
       background:
         mode === "light" ? { default: "#ffffff" } : { default: "#121212" },
       text:
         mode === "light"
           ? { primary: "#000000", secondary: "#555555" }
           : { primary: "#ffffff", secondary: "#aaaaaa" },
+      Black: paletteColors.Black,
+      Grayscale: paletteColors.Grayscale,
+      PrimaryBlue: paletteColors.PrimaryBlue,
+      White: paletteColors.White,
+      SecondaryYellow: paletteColors.SecondaryYellow,
+      SecondaryRed: paletteColors.SecondaryRed,
+      Line: paletteColors.Line,
+      Background: paletteColors.Background,
+      NeutralGray: paletteColors.NeutralGray,
     },
     components: {
       MuiButton: {
@@ -137,3 +146,4 @@ export const createAppTheme = (mode: "light" | "dark") =>
       },
     },
   });
+};

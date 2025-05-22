@@ -14,7 +14,10 @@ export const Like = ({ onClick }: IconBtnProps) => {
       {...IconBtnOptions}
       onClick={onClick}
       bgcolor={"white"}
-      sx={{ ":hover": { bgcolor: "#E6E6E6" }, ...IconBtnOptions.sx }}
+      sx={(theme) => ({
+        ":hover": { bgcolor: theme.palette.Line[200] },
+        ...IconBtnOptions.sx,
+      })}
     >
       <Image
         src={"/images/icon-btn/like.svg"}
@@ -34,7 +37,10 @@ export const Clip = ({ onClick }: IconBtnProps) => {
       {...IconBtnOptions}
       onClick={onClick}
       bgcolor={"white"}
-      sx={{ ":hover": { bgcolor: "#E6E6E6" }, ...IconBtnOptions.sx }}
+      sx={(theme) => ({
+        ":hover": { bgcolor: theme.palette.Line[200] },
+        ...IconBtnOptions.sx,
+      })}
     >
       <Image
         src={"/images/icon-btn/clip.svg"}
@@ -52,8 +58,11 @@ export const FaceBook = ({ onClick }: IconBtnProps) => {
   return (
     <Box
       {...IconBtnOptions}
-      bgcolor={"#4285F4"}
-      sx={{ ":hover": { bgcolor: "#357AE8" }, ...IconBtnOptions.sx }}
+      bgcolor={theme.palette.PrimaryBlue[600]}
+      sx={{
+        ":hover": { bgcolor: theme.palette.PrimaryBlue[700] },
+        ...IconBtnOptions.sx,
+      }}
       onClick={onClick}
     >
       <Image
@@ -73,8 +82,11 @@ export const Kakao = ({ onClick }: IconBtnProps) => {
     <Box
       {...IconBtnOptions}
       onClick={onClick}
-      bgcolor={"#FAE100"}
-      sx={{ ":hover": { bgcolor: "#F9D000" }, ...IconBtnOptions.sx }}
+      bgcolor={theme.palette.SecondaryYellow[300]}
+      sx={{
+        ":hover": { bgcolor: theme.palette.SecondaryYellow[200] },
+        ...IconBtnOptions.sx,
+      }}
     >
       <Image
         src={"/images/icon-btn/kakao.svg"}
