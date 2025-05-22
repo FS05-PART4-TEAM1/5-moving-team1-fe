@@ -14,22 +14,22 @@ export interface CardData {
   career: number;
   confirm: number;
   isLiked: boolean;
-  cost: number;
-  date: number;
-  from: string;
-  to: string;
+  cost?: number;
+  date?: number;
+  from?: string;
+  to?: string;
+  ReviewCheck?: boolean;
+  review?: number;
+  writeReview?: string;
 }
-
 interface CardProps {
   data: CardData;
-  onLikeClick?: () => void;
   onConfirmClick?: () => void;
   onDetailClick?: () => void;
 }
 
-export const CardListDriver = ({
+export const CardListRequest = ({
   data,
-  onLikeClick,
   onConfirmClick,
   onDetailClick,
 }: CardProps) => {
@@ -57,6 +57,7 @@ export const CardListDriver = ({
             <ChipCategory key={index} type={type} />
           ))}
         </Box>
+        <Typography>{data.date}시간 전</Typography>
       </Box>
 
       <Box
@@ -68,18 +69,6 @@ export const CardListDriver = ({
         gap={["12px", "12px", "24px"]}
         borderRadius={"6px"}
       >
-        <Box width={[46, 46, 56]} height={[46, 46, 56]} position="relative">
-          <Image
-            src={data.imgSrc}
-            alt={"프로필 이미지"}
-            fill
-            style={{
-              overflow: "hidden",
-              borderRadius: "50%",
-              objectFit: "cover",
-            }}
-          />
-        </Box>
         <Box display="flex" flexDirection="column" flexGrow={1}>
           <Box
             display="flex"
@@ -94,32 +83,8 @@ export const CardListDriver = ({
                 color: COLORS.Black[300],
               }}
             >
-              {data.name} 기사님
+              {data.name} 고객님
             </Typography>
-            <Box display="flex" alignItems="center">
-              <Image
-                src={
-                  data.isLiked
-                    ? "/images/like/like.svg"
-                    : "/images/like/unlike.svg"
-                }
-                alt="좋아요 버튼"
-                width={24}
-                height={24}
-                onClick={onLikeClick}
-                style={{ cursor: "pointer" }}
-              />
-              <Typography
-                sx={{
-                  fontSize: [13, 13, 18],
-                  lineHeight: ["22px", "22px", "26px"],
-                  fontWeight: 500,
-                  color: COLORS.PrimaryBlue[400],
-                }}
-              >
-                {data.like}
-              </Typography>
-            </Box>
           </Box>
           <Box
             display="flex"
@@ -339,7 +304,7 @@ export const CardListDriver = ({
               color: COLORS.Black[400],
             }}
           >
-            {data.cost.toLocaleString()}원
+            {(data.cost ?? 0).toLocaleString()}원
           </Typography>
         </Box>
         <Box

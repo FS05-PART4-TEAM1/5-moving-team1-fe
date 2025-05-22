@@ -14,7 +14,6 @@ export interface CardData {
   career: number;
   confirm: number;
   isLiked: boolean;
-  cost: number;
 }
 
 interface CardProps {
@@ -30,15 +29,11 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
       justifyContent="space-between"
       border="0.5px solid"
       borderColor={COLORS.Line[100]}
-      width={[327, 600, 688]}
-      height={[222, 222, 280]}
+      width={[327, 600, 955]}
+      height={[188, 188, 230]}
       bgcolor="#FFFFFF"
       borderRadius="16px"
-      padding={[
-        "16px 14px 10px 14px",
-        "16px 14px 10px 14px",
-        "20px 24px 14px 24px",
-      ]}
+      padding={["14px 16px", "14px 16px", "20px 24px"]}
       boxShadow="2px 2px 10px 0px #DCDCDC24, -2px -2px 10px 0px #DCDCDC24"
       boxSizing={"border-box"}
     >
@@ -83,7 +78,7 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
             }}
           />
         </Box>
-        <Box display="flex" flexDirection="column" flexGrow={1}>
+        <Box display="flex" flexDirection="column">
           <Box
             display="flex"
             flexDirection="row"
@@ -91,7 +86,7 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
           >
             <Typography
               sx={{
-                fontSize: [14, 14, 18],
+                fontSize: [14, 14, 84],
                 lineHeight: ["24px", "24px", "26px"],
                 fontWeight: 600,
                 color: COLORS.Black[300],
@@ -212,33 +207,6 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
             </Box>
           </Box>
         </Box>
-      </Box>
-      <Box
-        display="flex"
-        justifyContent="flex-end"
-        alignItems="flex-end"
-        gap={["8px", "16px"]}
-      >
-        <Typography
-          sx={{
-            fontSize: [14, 14, 18],
-            lineHeight: ["24px", "24px", "26px"],
-            fontWeight: 500,
-            color: COLORS.Black[400],
-          }}
-        >
-          견적 금액
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: [18, 18, 24],
-            lineHeight: ["26px", "26px", "32px"],
-            fontWeight: 700,
-            color: COLORS.PrimaryBlue[400],
-          }}
-        >
-          {data.cost.toLocaleString()}원
-        </Typography>
       </Box>
     </Box>
   );

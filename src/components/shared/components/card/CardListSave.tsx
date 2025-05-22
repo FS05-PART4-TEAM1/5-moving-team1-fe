@@ -28,43 +28,27 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
-      border="0.5px solid"
-      borderColor={COLORS.Line[100]}
+      border="0.5px solid #F2F2F2"
       width={[327, 600, 688]}
-      height={[222, 222, 280]}
+      height={[150, 150, 202]}
       bgcolor="#FFFFFF"
       borderRadius="16px"
-      padding={[
-        "16px 14px 10px 14px",
-        "16px 14px 10px 14px",
-        "20px 24px 14px 24px",
-      ]}
+      padding={["16px 14px", "16px 14px", "20px 24px"]}
       boxShadow="2px 2px 10px 0px #DCDCDC24, -2px -2px 10px 0px #DCDCDC24"
       boxSizing={"border-box"}
     >
-      <Box display="flex" flexDirection="column" gap={["14px", "16px"]}>
+      <Box>
         <Box display="flex" flexDirection="row" gap={["8px", "12px"]}>
           {data.types.map((type, index) => (
             <ChipCategory key={index} type={type} />
           ))}
         </Box>
-        <Typography
-          sx={{
-            fontSize: [14, 14, 24],
-            lineHeight: ["24px", "24px", "32px"],
-            fontWeight: 600,
-            color: COLORS.Black[300],
-          }}
-        >
-          {data.message}
-        </Typography>
       </Box>
 
       {/* 아래 */}
       <Box
         display="flex"
-        border="1px solid"
-        borderColor={COLORS.Line[100]}
+        border="1px solid #F2F2F2"
         bgcolor="#FFFFFF"
         padding={["10px", "10px", "16px 18px"]}
         boxShadow="4px 4px 16px 0px #E9E9E91A"
@@ -127,9 +111,9 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
           <Box
             display="flex"
             flexDirection="row"
-            flexGrow={1}
             gap={"9.5px"}
             alignItems="center"
+            flexGrow={1}
             justifyContent={["space-between", "flex-start"]}
           >
             <Box
@@ -212,33 +196,6 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
             </Box>
           </Box>
         </Box>
-      </Box>
-      <Box
-        display="flex"
-        justifyContent="flex-end"
-        alignItems="flex-end"
-        gap={["8px", "16px"]}
-      >
-        <Typography
-          sx={{
-            fontSize: [14, 14, 18],
-            lineHeight: ["24px", "24px", "26px"],
-            fontWeight: 500,
-            color: COLORS.Black[400],
-          }}
-        >
-          견적 금액
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: [18, 18, 24],
-            lineHeight: ["26px", "26px", "32px"],
-            fontWeight: 700,
-            color: COLORS.PrimaryBlue[400],
-          }}
-        >
-          {data.cost.toLocaleString()}원
-        </Typography>
       </Box>
     </Box>
   );

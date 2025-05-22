@@ -20,6 +20,7 @@ export const ChipAddress = ({ label = "도로명" }: ChipProps) => {
         lineHeight: ["20px", "24px"],
         fontWeight: 600,
         boxShadow: "4px 4px 10px 0px #E6E6E640",
+        boxSizing: "border-box",
       }}
     >
       <Typography

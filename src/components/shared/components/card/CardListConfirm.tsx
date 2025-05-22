@@ -38,7 +38,8 @@ export const CardListDriver = ({
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
-      border="0.5px solid #F2F2F2"
+      border="0.5px solid"
+      borderColor={COLORS.Line[100]}
       width={[327, 600, 688]}
       height={[398, 362, 410]}
       bgcolor="#FFFFFF"
@@ -61,7 +62,8 @@ export const CardListDriver = ({
 
       <Box
         display="flex"
-        border="1px solid #F2F2F2"
+        border="1px solid"
+        borderColor={COLORS.Line[100]}
         bgcolor="#FFFFFF"
         padding={["16px", "10px", "16px 10px"]}
         boxShadow="4px 4px 16px 0px #E9E9E91A"

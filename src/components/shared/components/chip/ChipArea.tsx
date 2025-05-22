@@ -23,6 +23,7 @@ export const ChipArea = ({
         padding: "10px 20px",
         borderRadius: "100px",
         cursor: "pointer",
+        boxSizing: "border-box",
       }}
     >
       <Typography

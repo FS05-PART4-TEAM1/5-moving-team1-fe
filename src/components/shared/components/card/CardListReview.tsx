@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { ChipCategory, ChipProps } from "../chip/ChipCategory";
 import Image from "next/image";
 import { COLORS } from "@/public/theme/colors";
@@ -14,24 +14,29 @@ export interface CardData {
   career: number;
   confirm: number;
   isLiked: boolean;
-  cost: number;
+  cost?: number;
+  date?: number;
+  from?: string;
+  to?: string;
+  ReviewCheck?: boolean;
+  review?: number;
+  writeReview?: string;
 }
 
 interface CardProps {
   data: CardData;
-  onLikeClick?: () => void;
+  onReviewClick: () => void;
 }
 
-export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
+export const CardListReview = ({ data, onReviewClick }: CardProps) => {
   return (
     <Box
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
-      border="0.5px solid"
-      borderColor={COLORS.Line[100]}
+      border="0.5px solid #F2F2F2"
       width={[327, 600, 688]}
-      height={[222, 222, 280]}
+      height={[208, 208, 346]}
       bgcolor="#FFFFFF"
       borderRadius="16px"
       padding={[
@@ -48,28 +53,17 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
             <ChipCategory key={index} type={type} />
           ))}
         </Box>
-        <Typography
-          sx={{
-            fontSize: [14, 14, 24],
-            lineHeight: ["24px", "24px", "32px"],
-            fontWeight: 600,
-            color: COLORS.Black[300],
-          }}
-        >
-          {data.message}
-        </Typography>
       </Box>
 
       {/* 아래 */}
       <Box
         display="flex"
-        border="1px solid"
-        borderColor={COLORS.Line[100]}
+        border={["0px", "0px", "1px solid #F2F2F2"]}
         bgcolor="#FFFFFF"
         padding={["10px", "10px", "16px 18px"]}
         boxShadow="4px 4px 16px 0px #E9E9E91A"
         gap={["12px", "12px", "24px"]}
-        borderRadius={"6px"}
+        borderRadius={"1px"}
       >
         <Box width={[46, 46, 56]} height={[46, 46, 56]} position="relative">
           <Image
@@ -80,6 +74,7 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
               overflow: "hidden",
               borderRadius: "50%",
               objectFit: "cover",
+              border: "2px solid #242945",
             }}
           />
         </Box>
@@ -99,30 +94,6 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
             >
               {data.name} 기사님
             </Typography>
-            <Box display="flex" alignItems="center">
-              <Image
-                src={
-                  data.isLiked
-                    ? "/images/like/like.svg"
-                    : "/images/like/unlike.svg"
-                }
-                alt="좋아요 버튼"
-                width={24}
-                height={24}
-                onClick={onLikeClick}
-                style={{ cursor: "pointer" }}
-              />
-              <Typography
-                sx={{
-                  fontSize: [13, 13, 18],
-                  lineHeight: ["22px", "22px", "26px"],
-                  fontWeight: 500,
-                  color: COLORS.PrimaryBlue[400],
-                }}
-              >
-                {data.like}
-              </Typography>
-            </Box>
           </Box>
           <Box
             display="flex"
@@ -132,39 +103,6 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
             alignItems="center"
             justifyContent={["space-between", "flex-start"]}
           >
-            <Box
-              display="flex"
-              justifyContent="space-between"
-              alignItems="center"
-            >
-              <Image
-                src="/images/star/star_active.svg"
-                alt="별점 사진"
-                width={20}
-                height={20}
-              />
-              <Typography
-                sx={{
-                  fontSize: [13, 13, 16],
-                  lineHeight: ["22px", "22px", "26px"],
-                  fontWeight: 500,
-                  color: COLORS.Black[300],
-                }}
-              >
-                {data.rating}
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: [13, 13, 16],
-                  lineHeight: ["22px", "22px", "26px"],
-                  fontWeight: 500,
-                  color: COLORS.Grayscale[300],
-                }}
-              >
-                ({data.count})
-              </Typography>
-            </Box>
-            <Box height={14} border={"1px solid #E6E6E6"}></Box>
             <Box display="flex">
               <Typography
                 sx={{
@@ -174,7 +112,7 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
                   color: COLORS.Grayscale[300],
                 }}
               >
-                경력
+                이사일
               </Typography>
               <Typography
                 sx={{
@@ -194,52 +132,38 @@ export const CardListDriver = ({ data, onLikeClick }: CardProps) => {
                   fontSize: [13, 13, 16],
                   lineHeight: ["22px", "22px", "26px"],
                   fontWeight: 500,
-                  color: COLORS.Black[300],
+                  color: COLORS.Grayscale[300],
                 }}
               >
-                {data.confirm}
+                견적가
               </Typography>
               <Typography
                 sx={{
                   fontSize: [13, 13, 16],
                   lineHeight: ["22px", "22px", "26px"],
                   fontWeight: 500,
-                  color: COLORS.Grayscale[300],
+                  color: COLORS.Black[300],
                 }}
               >
-                확정
+                {(data.cost ?? 0).toLocaleString()}원
               </Typography>
             </Box>
           </Box>
         </Box>
       </Box>
-      <Box
-        display="flex"
-        justifyContent="flex-end"
-        alignItems="flex-end"
-        gap={["8px", "16px"]}
+      <Button
+        disabled={data.ReviewCheck ? false : true}
+        onClick={onReviewClick}
+        variant="contained"
+        sx={{
+          bgcolor: data.ReviewCheck
+            ? COLORS.PrimaryBlue[300]
+            : COLORS.Grayscale[100],
+          height: [48, 48, 64],
+        }}
       >
-        <Typography
-          sx={{
-            fontSize: [14, 14, 18],
-            lineHeight: ["24px", "24px", "26px"],
-            fontWeight: 500,
-            color: COLORS.Black[400],
-          }}
-        >
-          견적 금액
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: [18, 18, 24],
-            lineHeight: ["26px", "26px", "32px"],
-            fontWeight: 700,
-            color: COLORS.PrimaryBlue[400],
-          }}
-        >
-          {data.cost.toLocaleString()}원
-        </Typography>
-      </Box>
+        {data.ReviewCheck ? "리뷰 작성하기" : "리뷰 작성 완료"}
+      </Button>
     </Box>
   );
 };

@@ -9,6 +9,8 @@ export interface ChipProps {
 const categoryData = {
   small: {
     label: "소형이사",
+    width: ["100px", "120px"],
+    height: ["24px", "26px"],
     bg: COLORS.PrimaryBlue[100],
     text: COLORS.PrimaryBlue[300],
     img: "/images/chip/box.svg",
@@ -96,6 +98,7 @@ export const ChipCategory = ({ type = "small" }: ChipProps) => {
           justifyContent: "center",
           alignItems: "center",
           boxShadow: "4px 4px 8px 0px #D9D9D91A",
+          boxSizing: "border-box",
         }}
       >
         {data.img && (
@@ -124,6 +127,7 @@ export const ChipCategory = ({ type = "small" }: ChipProps) => {
         gap: sizeStyle.gap,
         px: sizeStyle.px,
         boxShadow: "4px 4px 8px 0px #D9D9D91A",
+        boxSizing: "border-box",
       }}
     >
       {data.img && (
