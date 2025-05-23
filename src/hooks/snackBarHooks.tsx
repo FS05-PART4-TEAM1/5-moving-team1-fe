@@ -3,7 +3,6 @@ import { Snackbar, Alert, Stack, Typography, useTheme } from "@mui/material";
 import { useSnackbarStore } from "../store/snackBarStore";
 import Image from "next/image";
 
-const theme = useTheme();
 type Severity = "success" | "error" | "warning" | "info";
 
 interface UseSnackbarReturn {
@@ -16,13 +15,13 @@ interface UseSnackbarReturn {
   SnackbarComponent: React.ReactNode;
 }
 
-const infoStyles = {
-  bg: theme.palette.PrimaryBlue[100],
-  text: theme.palette.PrimaryBlue[300],
-  icon: "/images/info.svg",
-};
-
 export function useSnackbar(): UseSnackbarReturn {
+  const theme = useTheme();
+  const infoStyles = {
+    bg: theme.palette.PrimaryBlue[100],
+    text: theme.palette.PrimaryBlue[300],
+    icon: "/images/info.svg",
+  };
   const {
     open,
     message,

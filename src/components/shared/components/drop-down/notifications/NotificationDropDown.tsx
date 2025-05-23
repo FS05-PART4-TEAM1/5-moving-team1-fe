@@ -1,7 +1,6 @@
 "use client";
 
 import { Box, useTheme, useMediaQuery } from "@mui/material";
-import { COLORS } from "@/public/theme/colors";
 import NotificationHeader from "./NotificationHeader";
 import NotificationItem from "./NotificationItem";
 import CustomScrollY from "@/src/lib/customScrollY";
@@ -31,21 +30,21 @@ export default function NotificationDropDown({
 
   return (
     <Box
-      sx={{
+      sx={(theme) => ({
         position: "absolute",
         top: "20px",
         left: "20px",
         width: isTablet ? "312px" : "359px",
         height: isTablet ? "314px" : "352px",
-        backgroundColor: COLORS.White[100],
-        border: `1px solid ${COLORS.Line[200]}`,
+        backgroundColor: theme.palette.White[100],
+        border: `1px solid ${theme.palette.Line[200]}`,
         boxShadow: "2px 2px 16px rgba(0, 0, 0, 0.06)",
         borderRadius: "24px",
         boxSizing: "border-box",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
-      }}
+      })}
     >
       <Box
         sx={{

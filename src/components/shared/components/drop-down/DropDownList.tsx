@@ -1,7 +1,6 @@
 "use client";
 
 import { Box, Typography } from "@mui/material";
-import { COLORS } from "@/public/theme/colors";
 
 interface DropDownListProps {
   type: "region" | "service";

@@ -1,7 +1,6 @@
 "use client";
 
 import { Box, Typography, useTheme, useMediaQuery } from "@mui/material";
-import { COLORS } from "@/public/theme/colors";
 
 type MenuItemType = "nickname" | "menu" | "logout";
 
@@ -24,7 +23,7 @@ export default function ProfileMenuItem({
   const isTablet = useMediaQuery(theme.breakpoints.down("tablet"));
 
   const content = nickname ? `${nickname} 고객님` : label;
-  const itemType: MenuItemType = nickname ? "nickname" : type ?? "menu";
+  const itemType: MenuItemType = nickname ? "nickname" : (type ?? "menu");
 
   const getVariant = () => {
     if (itemType === "nickname") return isTablet ? "M_16" : "M_18";
@@ -34,7 +33,7 @@ export default function ProfileMenuItem({
 
   return (
     <Box
-      sx={{
+      sx={(theme) => ({
         width: "100%",
         maxWidth: "100%",
         height: itemType === "logout" ? "auto" : `${height}px`,
@@ -50,20 +49,22 @@ export default function ProfileMenuItem({
           ...(itemType === "logout"
             ? {}
             : label
-            ? { backgroundColor: COLORS.PrimaryBlue[50] }
-            : undefined),
+              ? { backgroundColor: theme.palette.PrimaryBlue[50] }
+              : undefined),
         },
         overflow: "hidden",
-      }}
+      })}
     >
       <Typography
         variant={getVariant()}
         fontWeight={bold ? "bold" : "normal"}
         whiteSpace="nowrap"
         minWidth={0}
-        sx={{
+        sx={(theme) => ({
           color:
-            itemType === "logout" ? COLORS.Grayscale[500] : COLORS.Black[300],
+            itemType === "logout"
+              ? theme.palette.Grayscale[500]
+              : theme.palette.Black[300],
           display: "flex",
           alignItems: "center",
           transition: "font-weight 0.2s",
@@ -72,7 +73,7 @@ export default function ProfileMenuItem({
               fontWeight: "bold", //로그아웃 hover 시
             },
           }),
-        }}
+        })}
       >
         {content}
       </Typography>
