@@ -1,7 +1,5 @@
 import { useTab } from "@/src/hooks/utill";
-import { COLORS } from "@/public/theme/colors";
-
-import { Box, Tab, Tabs } from "@mui/material";
+import { Box, Tab, Tabs, useTheme } from "@mui/material";
 import React from "react";
 
 interface MenuTabs {
@@ -9,7 +7,9 @@ interface MenuTabs {
 }
 
 export const MenuTabs = ({ menu }: MenuTabs) => {
+  const theme = useTheme();
   const { value, handleChange } = useTab();
+
   return (
     <Box>
       <Tabs
@@ -20,7 +20,7 @@ export const MenuTabs = ({ menu }: MenuTabs) => {
           indicator: {
             style: {
               color: "black",
-              backgroundColor: COLORS.Black[500],
+              backgroundColor: theme.palette.Black[500],
             },
           },
         }}
@@ -32,10 +32,10 @@ export const MenuTabs = ({ menu }: MenuTabs) => {
             sx={{
               color:
                 value === false
-                  ? COLORS.Black[500] // 초기 상태: 모두 동일하게
+                  ? theme.palette.Black[500] // 초기 상태: 모두 동일하게
                   : value === index
-                    ? COLORS.Black[500] // 선택된 탭
-                    : COLORS.Grayscale[400], // 비활성 탭
+                    ? theme.palette.Black[500] // 선택된 탭
+                    : theme.palette.Grayscale[400], // 비활성 탭
               fontSize: "18px",
               fontWeight: 700,
             }}

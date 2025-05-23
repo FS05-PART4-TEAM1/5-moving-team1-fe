@@ -1,6 +1,5 @@
 "use client";
 
-import { COLORS } from "@/public/theme/colors";
 import {
   InputProps,
   OutlinedInput,
@@ -48,7 +47,10 @@ export const Textarea = ({
         {...props}
       />
       {errorMessage && (
-        <Typography variant={font} color={COLORS.SecondaryRed[200]}>
+        <Typography
+          variant={font}
+          sx={(theme) => ({ color: theme.palette.SecondaryRed[200] })}
+        >
           {errorMessage}
         </Typography>
       )}

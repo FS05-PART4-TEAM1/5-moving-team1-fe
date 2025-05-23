@@ -24,31 +24,31 @@ export default function DropDownButton({
         padding: "6px 10px 6px 14px",
         border: `1px solid ${COLORS.Line[200]}`,
         borderRadius: "8px",
-        backgroundColor: COLORS.White[100],
+        backgroundColor: theme.palette.White[100],
         boxShadow: "4px 4px 10px rgba(238, 238, 238, 0.1)",
         typographyVariant: "M_14" as const,
       }
     : isSelected
-    ? {
-        width: "328px",
-        height: "64px",
-        padding: "16px 24px",
-        border: `1px solid ${COLORS.PrimaryBlue[300]}`,
-        borderRadius: "16px",
-        backgroundColor: COLORS.PrimaryBlue[50],
-        boxShadow: "4px 4px 10px rgba(195, 217, 242, 0.2)",
-        typographyVariant: "M_18" as const,
-      }
-    : {
-        width: "328px",
-        height: "64px",
-        padding: "16px 24px",
-        border: `1px solid ${COLORS.Grayscale[100]}`,
-        borderRadius: "16px",
-        backgroundColor: COLORS.White[100],
-        boxShadow: "4px 4px 10px rgba(195, 217, 242, 0.2)",
-        typographyVariant: "M_18" as const,
-      };
+      ? {
+          width: "328px",
+          height: "64px",
+          padding: "16px 24px",
+          border: `1px solid ${theme.palette.PrimaryBlue[300]}`,
+          borderRadius: "16px",
+          backgroundColor: theme.palette.PrimaryBlue[50],
+          boxShadow: "4px 4px 10px rgba(195, 217, 242, 0.2)",
+          typographyVariant: "M_18" as const,
+        }
+      : {
+          width: "328px",
+          height: "64px",
+          padding: "16px 24px",
+          border: "1px solid #DEDEDE",
+          borderRadius: "16px",
+          backgroundColor: theme.palette.White[100],
+          boxShadow: "4px 4px 10px rgba(195, 217, 242, 0.2)",
+          typographyVariant: "M_18" as const,
+        };
 
   const iconSrc = isSelected
     ? "/images/drop-down/chevron-down.svg"

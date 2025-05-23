@@ -1,4 +1,3 @@
-import { COLORS } from "@/public/theme/colors";
 import { InputProps, OutlinedInput, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { useState } from "react";
@@ -56,7 +55,10 @@ export const Outline = ({
         {...props}
       />
       {errorMessage && (
-        <Typography variant="M_13" color={COLORS.SecondaryRed[200]}>
+        <Typography
+          variant="M_13"
+          sx={(theme) => ({ color: theme.palette.SecondaryRed[200] })}
+        >
           {errorMessage}
         </Typography>
       )}

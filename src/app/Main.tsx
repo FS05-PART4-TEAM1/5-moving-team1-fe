@@ -37,7 +37,7 @@ export const Main = () => {
         gap={["8px", "8px", "16px"]}
         justifyContent={"center"}
       >
-        <Link href={PATH.login}>
+        <Link href={PATH.userlogin}>
           <Button
             fullWidth
             variant="contained"

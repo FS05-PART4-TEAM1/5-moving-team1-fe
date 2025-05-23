@@ -1,4 +1,3 @@
-import { COLORS } from "@/public/theme/colors";
 import { Box, Typography } from "@mui/material";
 
 interface ChipProps {
@@ -15,23 +14,29 @@ export const ChipArea = ({
   return (
     <Box
       onClick={onClick}
-      sx={{
+      sx={(theme) => ({
         display: "inline-block",
-        backgroundColor: selected ? COLORS.PrimaryBlue[50] : "#FAFAFA",
-        borderColor: selected ? COLORS.PrimaryBlue[300] : COLORS.Grayscale[100],
+        backgroundColor: selected
+          ? theme.palette.PrimaryBlue[50]
+          : theme.palette.NeutralGray[100],
+        borderColor: selected
+          ? theme.palette.PrimaryBlue[300]
+          : theme.palette.Grayscale[100],
         border: "1px solid",
         padding: "10px 20px",
         borderRadius: "100px",
         cursor: "pointer",
-      }}
+      })}
     >
       <Typography
-        sx={{
+        sx={(theme) => ({
           fontSize: [14, 18],
           lineHeight: ["24px", "26px"],
           fontWeight: 500,
-          color: selected ? COLORS.PrimaryBlue[300] : COLORS.PrimaryBlue[400],
-        }}
+          color: selected
+            ? theme.palette.PrimaryBlue[300]
+            : theme.palette.PrimaryBlue[400],
+        })}
       >
         {label}
       </Typography>
