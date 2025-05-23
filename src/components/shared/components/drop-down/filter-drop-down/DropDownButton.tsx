@@ -1,7 +1,6 @@
 "use client";
 import { Button, Typography, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
-import { COLORS } from "@/public/theme/colors";
 
 interface DropDownButtonProps {
   label: string;
@@ -28,13 +27,15 @@ export default function DropDownButton({
     gap: isTablet ? "6px" : "12px",
     border: `1px solid ${
       isSelected
-        ? COLORS.PrimaryBlue[300]
+        ? theme.palette.PrimaryBlue[300]
         : isTablet
-        ? COLORS.Line[200]
-        : COLORS.Grayscale[100]
+          ? theme.palette.Line[200]
+          : theme.palette.Grayscale[100]
     }`,
     borderRadius: isTablet ? "8px" : "16px",
-    backgroundColor: isSelected ? COLORS.PrimaryBlue[50] : COLORS.White[100],
+    backgroundColor: isSelected
+      ? theme.palette.PrimaryBlue[50]
+      : theme.palette.White[100],
     boxShadow: "4px 4px 10px rgba(238, 238, 238, 0.1)",
   };
 
@@ -47,7 +48,9 @@ export default function DropDownButton({
       <Typography
         variant={isTablet ? "M_14" : "M_18"}
         sx={{
-          color: isSelected ? COLORS.PrimaryBlue[300] : COLORS.Grayscale[50],
+          color: isSelected
+            ? theme.palette.PrimaryBlue[300]
+            : theme.palette.Grayscale[50],
         }}
         paddingRight={isTablet ? "5px" : "0px"}
       >
